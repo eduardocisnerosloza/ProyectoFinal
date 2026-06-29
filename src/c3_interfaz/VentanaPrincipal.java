@@ -182,21 +182,29 @@ public class VentanaPrincipal extends JFrame {
             Adoptante adoptanteSel = (Adoptante) comboAdoptantes.getSelectedItem();
 
             int porcentaje = gestorMatch.calcularMatch(adoptanteSel, animalSel);
-            String resultado = "Porcentaje de compatibilidad: " + porcentaje + "%\n\n";
+
+            String evaluacion = "Porcentaje de compatibilidad: " + porcentaje + "%\n\n";
 
             if (porcentaje >= 70) {
-                resultado += "ADOPCION VIABLE: El perfil es apto.\n";
-                animalSel.setEstado("Adoptado");
-                String fechaHoy = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-                Contrato contrato = new Contrato("CTR-" + System.currentTimeMillis(), fechaHoy, adoptanteSel, animalSel, porcentaje);
-                resultado += "\n--- CONTRATO GENERADO ---\n" + contrato.generarContrato();
-            } else if (porcentaje > 0) {
-                resultado += "MATCH BAJO: Se recomienda buscar otras opciones.";
-            } else {
-                resultado += "MATCH FALLIDO: No se cumplen los requisitos minimos o el adoptante esta vetado.";
-            }
+                evaluacion += "ADOPCION VIABLE: El perfil es apto.\n\n¿Desea confirmar la adopcion?";
+                int confirmacion = JOptionPane.showConfirmDialog(this, evaluacion, "Confirmar Adopcion", JOptionPane.YES_NO_OPTION);
 
-            JOptionPane.showMessageDialog(this, resultado);
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    animalSel.setEstado("Adoptado");
+                    animalSel.setAdoptante(adoptanteSel);
+                    String fechaHoy = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+                    Contrato contrato = new Contrato("CTR-" + System.currentTimeMillis(), fechaHoy, adoptanteSel, animalSel, porcentaje);
+                    JOptionPane.showMessageDialog(this, "--- CONTRATO GENERADO ---\n" + contrato.generarContrato());
+                } else {
+                    JOptionPane.showMessageDialog(this, "Adopcion cancelada por el usuario.");
+                }
+            } else if (porcentaje > 0) {
+                evaluacion += "MATCH BAJO: Se recomienda buscar otras opciones.";
+                JOptionPane.showMessageDialog(this, evaluacion);
+            } else {
+                evaluacion += "MATCH FALLIDO: No se cumplen los requisitos minimos o el adoptante esta vetado.";
+                JOptionPane.showMessageDialog(this, evaluacion);
+            }
         }
     }
 
@@ -208,28 +216,31 @@ public class VentanaPrincipal extends JFrame {
             }
         }
 
-        if (adoptados.isEmpty() || listaAdoptantes.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No hay animales adoptados para devolver o adoptantes registrados.");
+        if (adoptados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay animales adoptados para devolver.");
             return;
         }
 
         JComboBox<Animal> comboAnimales = new JComboBox<>(adoptados.toArray(new Animal[0]));
-        JComboBox<Adoptante> comboAdoptantes = new JComboBox<>(listaAdoptantes.toArray(new Adoptante[0]));
 
         Object[] message = {
-                "Animal devuelto:", comboAnimales,
-                "Adoptante responsable:", comboAdoptantes
+                "Seleccione el animal a devolver:", comboAnimales
         };
 
         int option = JOptionPane.showConfirmDialog(this, message, "Registrar Devolucion", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             Animal animalSel = (Animal) comboAnimales.getSelectedItem();
-            Adoptante adoptanteSel = (Adoptante) comboAdoptantes.getSelectedItem();
+            Adoptante adoptanteSel = animalSel.getAdoptante();
 
             animalSel.setEstado("En Cuarentena");
-            adoptanteSel.setVetado(true);
+            animalSel.setAdoptante(null);
 
-            JOptionPane.showMessageDialog(this, "Devolucion procesada.\nEl animal ingreso a cuarentena y el adoptante fue VETADO.");
+            if (adoptanteSel != null) {
+                adoptanteSel.setVetado(true);
+                JOptionPane.showMessageDialog(this, "Devolucion procesada.\nEl animal ingreso a cuarentena.\nEl adoptante " + adoptanteSel.getNombre() + " fue VETADO.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Devolucion procesada.\nEl animal ingreso a cuarentena.");
+            }
         }
     }
 

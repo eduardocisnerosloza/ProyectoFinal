@@ -6,6 +6,7 @@ public abstract class Animal {
     private int nivelEnergia;
     private boolean condicionMedicaEspecial;
     private String estado;
+    private Adoptante adoptante;
 
     public Animal(String id, String nombre, int nivelEnergia, boolean condicionMedicaEspecial) {
         this.id = id;
@@ -13,6 +14,7 @@ public abstract class Animal {
         this.nivelEnergia = nivelEnergia;
         this.condicionMedicaEspecial = condicionMedicaEspecial;
         this.estado = "En Cuarentena";
+        this.adoptante = null;
     }
 
     public String getId() { return id; }
@@ -21,6 +23,8 @@ public abstract class Animal {
     public boolean tieneCondicionMedica() { return condicionMedicaEspecial; }
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+    public Adoptante getAdoptante() { return adoptante; }
+    public void setAdoptante(Adoptante adoptante) { this.adoptante = adoptante; }
 
     public abstract String getTipo();
 
