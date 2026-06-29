@@ -6,6 +6,10 @@ import c1_modelo.Animal;
 public class GestorEmparejamiento {
 
     public int calcularMatch(Adoptante adoptante, Animal animal) {
+        if (adoptante.isVetado()) {
+            return 0;
+        }
+
         int puntaje = 100;
 
         if (animal.tieneCondicionMedica() && adoptante.getPresupuestoMensual() < 100.0) {
