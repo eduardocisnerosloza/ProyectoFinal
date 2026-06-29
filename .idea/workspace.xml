@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="aca6de88-0803-4bce-a043-ac7913a66ed0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/c3_interfaz/ConsolaPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Contrato.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Contrato.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Persona.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Persona.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c2_negocio/GestorEmparejamiento.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c2_negocio/GestorEmparejamiento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/ConsolaPrincipal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c3_interfaz/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c3_interfaz/VentanaPrincipal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ConsolaPrincipal.executor": "Run",
+    "Application.VentanaPrincipal.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",

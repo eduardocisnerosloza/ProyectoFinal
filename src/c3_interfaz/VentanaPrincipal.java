@@ -63,15 +63,26 @@ public class VentanaPrincipal extends JFrame {
         int option = JOptionPane.showConfirmDialog(this, message, "Registrar Perro", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             try {
-                String id = txtId.getText();
+                String id = txtId.getText().trim();
                 for (Animal a : listaAnimales) {
                     if (a.getId().equals(id)) {
                         JOptionPane.showMessageDialog(this, "Error: Ya existe un animal con el ID " + id);
                         return;
                     }
                 }
-                String nombre = txtNombre.getText();
+
+                String nombre = txtNombre.getText().trim();
+                if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                    JOptionPane.showMessageDialog(this, "Error: El nombre solo debe contener letras.");
+                    return;
+                }
+
                 int energia = Integer.parseInt(txtEnergia.getText());
+                if (energia < 1 || energia > 5) {
+                    JOptionPane.showMessageDialog(this, "Error: La energia debe estar entre 1 y 5.");
+                    return;
+                }
+
                 boolean condicion = chkCondicion.isSelected();
 
                 listaAnimales.add(new Perro(id, nombre, energia, condicion));
@@ -100,16 +111,37 @@ public class VentanaPrincipal extends JFrame {
         int option = JOptionPane.showConfirmDialog(this, message, "Registrar Adoptante", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             try {
-                String cedula = txtCedula.getText();
+                String cedula = txtCedula.getText().trim();
+                if (!cedula.matches("\\d+")) {
+                    JOptionPane.showMessageDialog(this, "Error: La cedula solo debe contener numeros.");
+                    return;
+                }
+
                 for (Adoptante a : listaAdoptantes) {
                     if (a.getCedula().equals(cedula)) {
                         JOptionPane.showMessageDialog(this, "Error: Ya existe un adoptante con la Cedula " + cedula);
                         return;
                     }
                 }
-                String nombre = txtNombre.getText();
+
+                String nombre = txtNombre.getText().trim();
+                if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                    JOptionPane.showMessageDialog(this, "Error: El nombre solo debe contener letras.");
+                    return;
+                }
+
                 double presupuesto = Double.parseDouble(txtPresupuesto.getText());
+                if (presupuesto < 0) {
+                    JOptionPane.showMessageDialog(this, "Error: El presupuesto no puede ser negativo.");
+                    return;
+                }
+
                 int horas = Integer.parseInt(txtHoras.getText());
+                if (horas < 0) {
+                    JOptionPane.showMessageDialog(this, "Error: Las horas no pueden ser negativas.");
+                    return;
+                }
+
                 boolean experiencia = chkExperiencia.isSelected();
 
                 listaAdoptantes.add(new Adoptante(cedula, nombre, presupuesto, horas, experiencia));
@@ -121,12 +153,19 @@ public class VentanaPrincipal extends JFrame {
     }
 
     private void evaluarCompatibilidad() {
-        if (listaAnimales.isEmpty() || listaAdoptantes.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe registrar al menos un animal y un adoptante.");
+        ArrayList<Animal> disponibles = new ArrayList<>();
+        for (Animal a : listaAnimales) {
+            if (!a.getEstado().equals("Adoptado")) {
+                disponibles.add(a);
+            }
+        }
+
+        if (disponibles.isEmpty() || listaAdoptantes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe registrar al menos un animal disponible y un adoptante.");
             return;
         }
 
-        JComboBox<Animal> comboAnimales = new JComboBox<>(listaAnimales.toArray(new Animal[0]));
+        JComboBox<Animal> comboAnimales = new JComboBox<>(disponibles.toArray(new Animal[0]));
         JComboBox<Adoptante> comboAdoptantes = new JComboBox<>(listaAdoptantes.toArray(new Adoptante[0]));
 
         Object[] message = {
