@@ -120,14 +120,14 @@ public class ConsolaPrincipal {
 
                 System.out.println("\nPerros disponibles:");
                 for (int i = 0; i < listaPerros.size(); i++) {
-                    System.out.println(i + ". " + listaPerros.get(i).getNombre() + " (Estado: " + listaPerros.get(i).getEstado() + ")");
+                    System.out.println(i + ". " + listaPerros.get(i).toString());
                 }
                 System.out.print("Seleccione el numero del perro: ");
                 int indexPerro = Integer.parseInt(scanner.nextLine());
 
                 System.out.println("\nAdoptantes registrados:");
                 for (int i = 0; i < listaAdoptantes.size(); i++) {
-                    System.out.println(i + ". " + listaAdoptantes.get(i).getNombre());
+                    System.out.println(i + ". " + listaAdoptantes.get(i).toString());
                 }
                 System.out.print("Seleccione el numero del adoptante: ");
                 int indexAdoptante = Integer.parseInt(scanner.nextLine());
