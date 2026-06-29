@@ -26,24 +26,27 @@ public class VentanaPrincipal extends JFrame {
         listaAnimales.add(new Perro("P-002", "Quijote", 5, false));
 
         setTitle("Sistema de Gestion de Refugio");
-        setSize(400, 300);
+        setSize(400, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(4, 1, 10, 10));
+        setLayout(new GridLayout(5, 1, 10, 10));
 
         JButton btnRegistrarPerro = new JButton("Registrar Perro");
         JButton btnRegistrarAdoptante = new JButton("Registrar Adoptante");
         JButton btnEvaluar = new JButton("Evaluar Compatibilidad");
+        JButton btnDevolucion = new JButton("Registrar Devolucion");
         JButton btnSalir = new JButton("Salir");
 
         add(btnRegistrarPerro);
         add(btnRegistrarAdoptante);
         add(btnEvaluar);
+        add(btnDevolucion);
         add(btnSalir);
 
         btnRegistrarPerro.addActionListener(e -> registrarPerro());
         btnRegistrarAdoptante.addActionListener(e -> registrarAdoptante());
         btnEvaluar.addActionListener(e -> evaluarCompatibilidad());
+        btnDevolucion.addActionListener(e -> registrarDevolucion());
         btnSalir.addActionListener(e -> System.exit(0));
     }
 
@@ -190,10 +193,43 @@ public class VentanaPrincipal extends JFrame {
             } else if (porcentaje > 0) {
                 resultado += "MATCH BAJO: Se recomienda buscar otras opciones.";
             } else {
-                resultado += "MATCH FALLIDO: No se cumplen los requisitos minimos.";
+                resultado += "MATCH FALLIDO: No se cumplen los requisitos minimos o el adoptante esta vetado.";
             }
 
             JOptionPane.showMessageDialog(this, resultado);
+        }
+    }
+
+    private void registrarDevolucion() {
+        ArrayList<Animal> adoptados = new ArrayList<>();
+        for (Animal a : listaAnimales) {
+            if (a.getEstado().equals("Adoptado")) {
+                adoptados.add(a);
+            }
+        }
+
+        if (adoptados.isEmpty() || listaAdoptantes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay animales adoptados para devolver o adoptantes registrados.");
+            return;
+        }
+
+        JComboBox<Animal> comboAnimales = new JComboBox<>(adoptados.toArray(new Animal[0]));
+        JComboBox<Adoptante> comboAdoptantes = new JComboBox<>(listaAdoptantes.toArray(new Adoptante[0]));
+
+        Object[] message = {
+                "Animal devuelto:", comboAnimales,
+                "Adoptante responsable:", comboAdoptantes
+        };
+
+        int option = JOptionPane.showConfirmDialog(this, message, "Registrar Devolucion", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            Animal animalSel = (Animal) comboAnimales.getSelectedItem();
+            Adoptante adoptanteSel = (Adoptante) comboAdoptantes.getSelectedItem();
+
+            animalSel.setEstado("En Cuarentena");
+            adoptanteSel.setVetado(true);
+
+            JOptionPane.showMessageDialog(this, "Devolucion procesada.\nEl animal ingreso a cuarentena y el adoptante fue VETADO.");
         }
     }
 
