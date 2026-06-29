@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aca6de88-0803-4bce-a043-ac7913a66ed0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Contrato.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Contrato.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/ConsolaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/ConsolaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Contrato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Contrato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c3_interfaz/ConsolaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c3_interfaz/ConsolaPrincipal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -3,6 +3,7 @@ package c3_interfaz;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ArrayList;
 import c1_modelo.Adoptante;
 import c1_modelo.Perro;
 import c1_modelo.Contrato;
@@ -13,62 +14,142 @@ public class ConsolaPrincipal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         GestorEmparejamiento gestorMatch = new GestorEmparejamiento();
+        ArrayList<Perro> listaPerros = new ArrayList<>();
+        ArrayList<Adoptante> listaAdoptantes = new ArrayList<>();
 
-        System.out.println(" SISTEMA DE GESTIÓN DE REFUGIO ");
+        listaPerros.add(new Perro("P-001", "Canelo", 2, true));
+        listaPerros.add(new Perro("P-002", "Quijote", 5, false));
 
-        // 1. Registro de Perro
-        System.out.println("\n Registro de Perro ");
-        System.out.print("Ingrese ID del perro: ");
-        String idPerro = scanner.nextLine();
-        System.out.print("Ingrese nombre del perro: ");
-        String nombrePerro = scanner.nextLine();
-        System.out.print("Nivel de energía (1-5): ");
-        int energia = scanner.nextInt();
-        System.out.print("¿Tiene condición médica especial? (true/false): ");
-        boolean condicion = scanner.nextBoolean();
-        scanner.nextLine();
+        int opcion = 0;
 
-        Perro perro1 = new Perro(idPerro, nombrePerro, energia, condicion);
-        System.out.println(" Perro registrado: " + perro1.toString());
+        while (opcion != 4) {
+            System.out.println("\n--- SISTEMA DE GESTION DE REFUGIO ---");
+            System.out.println("1. Registrar Perro");
+            System.out.println("2. Registrar Adoptante");
+            System.out.println("3. Evaluar Compatibilidad");
+            System.out.println("4. Salir");
+            System.out.print("Seleccione una opcion: ");
 
-        // 2. Registro de Adoptante
-        System.out.println("\n Registro de Adoptante ");
-        System.out.print("Ingrese Cédula: ");
-        String cedula = scanner.nextLine();
-        System.out.print("Ingrese Nombre: ");
-        String nombreAdoptante = scanner.nextLine();
-        System.out.print("Presupuesto mensual para la mascota ($): ");
-        double presupuesto = scanner.nextDouble();
-        System.out.print("Horas fuera de casa al día: ");
-        int horas = scanner.nextInt();
-        System.out.print("¿Tiene experiencia previa con perros? (true/false): ");
-        boolean experiencia = scanner.nextBoolean();
+            try {
+                opcion = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opcion no valida. Intente de nuevo.");
+                continue;
+            }
 
-        Adoptante adoptante1 = new Adoptante(cedula, nombreAdoptante, presupuesto, horas, experiencia);
-        System.out.println("  Adoptante registrado: " + adoptante1.toString());
+            if (opcion == 1) {
+                System.out.print("Ingrese ID del perro: ");
+                String idPerro = scanner.nextLine();
 
-        // 3. Ejecutar algoritmo de Match
-        System.out.println("\n Evaluando Compatibilidad ");
-        int porcentajeMatch = gestorMatch.calcularMatch(adoptante1, perro1);
+                boolean idExiste = false;
+                for (Perro p : listaPerros) {
+                    if (p.getId().equals(idPerro)) {
+                        idExiste = true;
+                        break;
+                    }
+                }
 
-        System.out.println("Porcentaje de compatibilidad: " + porcentajeMatch + "%");
+                if (idExiste) {
+                    System.out.println("Error: Ya existe un perro registrado con el ID " + idPerro);
+                } else {
+                    System.out.print("Ingrese nombre del perro: ");
+                    String nombrePerro = scanner.nextLine();
+                    int energia = 0;
+                    boolean condicion = false;
 
-        if (porcentajeMatch >= 70) {
-            System.out.println(" ADOPCIÓN VIABLE: El perfil es apto para este perro.");
-            perro1.setEstado("Adoptado");
+                    while (true) {
+                        try {
+                            System.out.print("Nivel de energia (1-5): ");
+                            energia = Integer.parseInt(scanner.nextLine());
+                            System.out.print("Tiene condicion medica especial? (true/false): ");
+                            condicion = Boolean.parseBoolean(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Error: Formato invalido. Intente de nuevo.");
+                        }
+                    }
+                    Perro nuevoPerro = new Perro(idPerro, nombrePerro, energia, condicion);
+                    listaPerros.add(nuevoPerro);
+                    System.out.println("Perro registrado exitosamente.");
+                }
 
-            // Generar fecha actual para el contrato
-            String fechaHoy = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+            } else if (opcion == 2) {
+                System.out.print("Ingrese Cedula: ");
+                String cedula = scanner.nextLine();
 
-            // Instanciar y generar el contrato
-            Contrato contrato = new Contrato("CTR-1001", fechaHoy, adoptante1, perro1, porcentajeMatch);
-            contrato.generarContrato();
+                boolean cedulaExiste = false;
+                for (Adoptante a : listaAdoptantes) {
+                    if (a.getCedula().equals(cedula)) {
+                        cedulaExiste = true;
+                        break;
+                    }
+                }
 
-        } else if (porcentajeMatch > 0) {
-            System.out.println(" MATCH BAJO: Se recomienda buscar otras opciones de perros en el refugio.");
+                if (cedulaExiste) {
+                    System.out.println("Error: Ya existe un adoptante registrado con la Cedula " + cedula);
+                } else {
+                    System.out.print("Ingrese Nombre: ");
+                    String nombreAdoptante = scanner.nextLine();
+                    double presupuesto = 0.0;
+                    int horas = 0;
+                    boolean experiencia = false;
+
+                    while (true) {
+                        try {
+                            System.out.print("Presupuesto mensual ($): ");
+                            presupuesto = Double.parseDouble(scanner.nextLine());
+                            System.out.print("Horas fuera de casa al dia: ");
+                            horas = Integer.parseInt(scanner.nextLine());
+                            System.out.print("Tiene experiencia previa? (true/false): ");
+                            experiencia = Boolean.parseBoolean(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Error: Formato invalido. Intente de nuevo.");
+                        }
+                    }
+                    Adoptante nuevoAdoptante = new Adoptante(cedula, nombreAdoptante, presupuesto, horas, experiencia);
+                    listaAdoptantes.add(nuevoAdoptante);
+                    System.out.println("Adoptante registrado exitosamente.");
+                }
+
+            } else if (opcion == 3) {
+                if (listaPerros.isEmpty() || listaAdoptantes.isEmpty()) {
+                    System.out.println("Debe registrar al menos un perro y un adoptante antes de evaluar.");
+                    continue;
+                }
+
+                System.out.println("\nPerros disponibles:");
+                for (int i = 0; i < listaPerros.size(); i++) {
+                    System.out.println(i + ". " + listaPerros.get(i).getNombre() + " (Estado: " + listaPerros.get(i).getEstado() + ")");
+                }
+                System.out.print("Seleccione el numero del perro: ");
+                int indexPerro = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("\nAdoptantes registrados:");
+                for (int i = 0; i < listaAdoptantes.size(); i++) {
+                    System.out.println(i + ". " + listaAdoptantes.get(i).getNombre());
+                }
+                System.out.print("Seleccione el numero del adoptante: ");
+                int indexAdoptante = Integer.parseInt(scanner.nextLine());
+
+                Perro perroSeleccionado = listaPerros.get(indexPerro);
+                Adoptante adoptanteSeleccionado = listaAdoptantes.get(indexAdoptante);
+
+                int porcentajeMatch = gestorMatch.calcularMatch(adoptanteSeleccionado, perroSeleccionado);
+                System.out.println("\nPorcentaje de compatibilidad: " + porcentajeMatch + "%");
+
+                if (porcentajeMatch >= 70) {
+                    System.out.println("ADOPCION VIABLE: El perfil es apto para este perro.");
+                    perroSeleccionado.setEstado("Adoptado");
+                    String fechaHoy = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+                    Contrato contrato = new Contrato("CTR-" + System.currentTimeMillis(), fechaHoy, adoptanteSeleccionado, perroSeleccionado, porcentajeMatch);
+                    System.out.println("\n--- CONTRATO GENERADO ---");
+                    System.out.println(contrato.generarContrato());
+                } else if (porcentajeMatch > 0) {
+                    System.out.println("MATCH BAJO: Se recomienda buscar otras opciones en el refugio.");
+                }
+            }
         }
-
         scanner.close();
     }
 }
-
