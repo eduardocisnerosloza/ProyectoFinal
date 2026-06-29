@@ -5,16 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aca6de88-0803-4bce-a043-ac7913a66ed0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/c1_modelo/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Adoptante.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Adoptante.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/ConsolaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/ConsolaPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Adoptante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Adoptante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Contrato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Contrato.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c1_modelo/Perro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Perro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c3_interfaz/ConsolaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c3_interfaz/ConsolaPrincipal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

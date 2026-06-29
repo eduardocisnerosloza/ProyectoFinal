@@ -1,29 +1,29 @@
 package c2_negocio;
 
 import c1_modelo.Adoptante;
-import c1_modelo.Perro;
+import c1_modelo.Animal;
 
 public class GestorEmparejamiento {
 
-    public int calcularMatch(Adoptante adoptante, Perro perro) {
+    public int calcularMatch(Adoptante adoptante, Animal animal) {
         int puntaje = 100;
 
-        if (perro.tieneCondicionMedica() && adoptante.getPresupuestoMensual() < 50.0) {
-            System.out.println(" MATCH FALLIDO: El perro requiere cuidados médicos y el presupuesto es insuficiente.");
+        if (animal.tieneCondicionMedica() && adoptante.getPresupuestoMensual() < 50.0) {
+            System.out.println(" MATCH FALLIDO: El animal requiere cuidados medicos y el presupuesto es insuficiente.");
             return 0;
         }
 
-        if (perro.getNivelEnergia() >= 4 && adoptante.getHorasFueraCasa() > 8) {
-            System.out.println(" MATCH FALLIDO: El perro tiene mucha energía para el tiempo que pasará solo.");
+        if (animal.getNivelEnergia() >= 4 && adoptante.getHorasFueraCasa() > 8) {
+            System.out.println(" MATCH FALLIDO: El animal tiene mucha energia para el tiempo que pasara solo.");
             return 0;
         }
 
-        if (perro.tieneCondicionMedica() && adoptante.getHorasFueraCasa() > 6) {
-            System.out.println(" MATCH FALLIDO: El perro requiere atención médica y pasará demasiado tiempo solo.");
+        if (animal.tieneCondicionMedica() && adoptante.getHorasFueraCasa() > 6) {
+            System.out.println(" MATCH FALLIDO: El animal requiere atencion medica y pasara demasiado tiempo solo.");
             return 0;
         }
 
-        if (!adoptante.tieneExperiencia() && perro.getNivelEnergia() > 3) {
+        if (!adoptante.tieneExperiencia() && animal.getNivelEnergia() > 3) {
             puntaje -= 30;
         }
 
@@ -36,4 +36,3 @@ public class GestorEmparejamiento {
         return puntaje;
     }
 }
-

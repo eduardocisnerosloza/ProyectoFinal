@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 import c1_modelo.Adoptante;
+import c1_modelo.Animal;
 import c1_modelo.Perro;
 import c1_modelo.Contrato;
 import c2_negocio.GestorEmparejamiento;
@@ -14,11 +15,11 @@ public class ConsolaPrincipal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         GestorEmparejamiento gestorMatch = new GestorEmparejamiento();
-        ArrayList<Perro> listaPerros = new ArrayList<>();
+        ArrayList<Animal> listaAnimales = new ArrayList<>();
         ArrayList<Adoptante> listaAdoptantes = new ArrayList<>();
 
-        listaPerros.add(new Perro("P-001", "Canelo", 2, true));
-        listaPerros.add(new Perro("P-002", "Quijote", 5, false));
+        listaAnimales.add(new Perro("P-001", "Canelo", 2, true));
+        listaAnimales.add(new Perro("P-002", "Quijote", 5, false));
 
         int opcion = 0;
 
@@ -42,15 +43,15 @@ public class ConsolaPrincipal {
                 String idPerro = scanner.nextLine();
 
                 boolean idExiste = false;
-                for (Perro p : listaPerros) {
-                    if (p.getId().equals(idPerro)) {
+                for (Animal a : listaAnimales) {
+                    if (a.getId().equals(idPerro)) {
                         idExiste = true;
                         break;
                     }
                 }
 
                 if (idExiste) {
-                    System.out.println("Error: Ya existe un perro registrado con el ID " + idPerro);
+                    System.out.println("Error: Ya existe un animal registrado con el ID " + idPerro);
                 } else {
                     System.out.print("Ingrese nombre del perro: ");
                     String nombrePerro = scanner.nextLine();
@@ -68,8 +69,8 @@ public class ConsolaPrincipal {
                             System.out.println("Error: Formato invalido. Intente de nuevo.");
                         }
                     }
-                    Perro nuevoPerro = new Perro(idPerro, nombrePerro, energia, condicion);
-                    listaPerros.add(nuevoPerro);
+                    Animal nuevoPerro = new Perro(idPerro, nombrePerro, energia, condicion);
+                    listaAnimales.add(nuevoPerro);
                     System.out.println("Perro registrado exitosamente.");
                 }
 
@@ -113,16 +114,16 @@ public class ConsolaPrincipal {
                 }
 
             } else if (opcion == 3) {
-                if (listaPerros.isEmpty() || listaAdoptantes.isEmpty()) {
-                    System.out.println("Debe registrar al menos un perro y un adoptante antes de evaluar.");
+                if (listaAnimales.isEmpty() || listaAdoptantes.isEmpty()) {
+                    System.out.println("Debe registrar al menos un animal y un adoptante antes de evaluar.");
                     continue;
                 }
 
-                System.out.println("\nPerros disponibles:");
-                for (int i = 0; i < listaPerros.size(); i++) {
-                    System.out.println(i + ". " + listaPerros.get(i).toString());
+                System.out.println("\nAnimales disponibles:");
+                for (int i = 0; i < listaAnimales.size(); i++) {
+                    System.out.println(i + ". " + listaAnimales.get(i).toString());
                 }
-                System.out.print("Seleccione el numero del perro: ");
+                System.out.print("Seleccione el numero del animal: ");
                 int indexPerro = Integer.parseInt(scanner.nextLine());
 
                 System.out.println("\nAdoptantes registrados:");
@@ -132,17 +133,17 @@ public class ConsolaPrincipal {
                 System.out.print("Seleccione el numero del adoptante: ");
                 int indexAdoptante = Integer.parseInt(scanner.nextLine());
 
-                Perro perroSeleccionado = listaPerros.get(indexPerro);
+                Animal animalSeleccionado = listaAnimales.get(indexPerro);
                 Adoptante adoptanteSeleccionado = listaAdoptantes.get(indexAdoptante);
 
-                int porcentajeMatch = gestorMatch.calcularMatch(adoptanteSeleccionado, perroSeleccionado);
+                int porcentajeMatch = gestorMatch.calcularMatch(adoptanteSeleccionado, animalSeleccionado);
                 System.out.println("\nPorcentaje de compatibilidad: " + porcentajeMatch + "%");
 
                 if (porcentajeMatch >= 70) {
-                    System.out.println("ADOPCION VIABLE: El perfil es apto para este perro.");
-                    perroSeleccionado.setEstado("Adoptado");
+                    System.out.println("ADOPCION VIABLE: El perfil es apto para este animal.");
+                    animalSeleccionado.setEstado("Adoptado");
                     String fechaHoy = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-                    Contrato contrato = new Contrato("CTR-" + System.currentTimeMillis(), fechaHoy, adoptanteSeleccionado, perroSeleccionado, porcentajeMatch);
+                    Contrato contrato = new Contrato("CTR-" + System.currentTimeMillis(), fechaHoy, adoptanteSeleccionado, animalSeleccionado, porcentajeMatch);
                     System.out.println("\n--- CONTRATO GENERADO ---");
                     System.out.println(contrato.generarContrato());
                 } else if (porcentajeMatch > 0) {

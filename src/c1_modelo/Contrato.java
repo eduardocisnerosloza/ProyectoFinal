@@ -5,13 +5,13 @@ public class Contrato {
     private String fecha;
     private int porcentajeCompatibilidad;
     private Adoptante adoptante;
-    private Perro perro;
+    private Animal animal;
 
-    public Contrato(String idContrato, String fecha, Adoptante adoptante, Perro perro, int porcentajeCompatibilidad) {
+    public Contrato(String idContrato, String fecha, Adoptante adoptante, Animal animal, int porcentajeCompatibilidad) {
         this.idContrato = idContrato;
         this.fecha = fecha;
         this.adoptante = adoptante;
-        this.perro = perro;
+        this.animal = animal;
         this.porcentajeCompatibilidad = porcentajeCompatibilidad;
     }
 
@@ -19,7 +19,7 @@ public class Contrato {
         return "ID Contrato: " + idContrato + "\n" +
                 "Fecha: " + fecha + "\n" +
                 "Adoptante: " + adoptante.getNombre() + " (C.I: " + adoptante.getCedula() + ")\n" +
-                "Perro Adoptado: " + perro.getNombre() + " (ID: " + perro.getId() + ")\n" +
+                "Animal Adoptado: " + animal.getNombre() + " (ID: " + animal.getId() + ")\n" +
                 "Nivel de Compatibilidad Validado: " + porcentajeCompatibilidad + "%";
     }
 }
