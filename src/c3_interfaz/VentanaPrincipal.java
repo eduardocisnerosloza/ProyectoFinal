@@ -22,8 +22,8 @@ public class VentanaPrincipal extends JFrame {
         listaAdoptantes = new ArrayList<>();
         gestorMatch = new GestorEmparejamiento();
 
-        listaAnimales.add(new Perro("P-001", "Canelo", 2, true));
-        listaAnimales.add(new Perro("P-002", "Quijote", 5, false));
+        listaAnimales.add(new Perro("P-001", "Canelo", "Pitbull", 3, "Mediano", 2, true, 4));
+        listaAnimales.add(new Perro("P-002", "Quijote", "Pitbull", 4, "Grande", 5, false, 0));
 
         setTitle("Sistema de Gestion de Refugio");
         setSize(400, 350);
@@ -53,14 +53,22 @@ public class VentanaPrincipal extends JFrame {
     private void registrarPerro() {
         JTextField txtId = new JTextField();
         JTextField txtNombre = new JTextField();
+        JTextField txtRaza = new JTextField();
+        JTextField txtEdad = new JTextField();
+        JComboBox<String> cmbTamano = new JComboBox<>(new String[]{"Pequeño", "Mediano", "Grande"});
         JTextField txtEnergia = new JTextField();
         JCheckBox chkCondicion = new JCheckBox("Tiene condicion medica especial?");
+        JTextField txtCriticidad = new JTextField("0");
 
         Object[] message = {
                 "ID del perro:", txtId,
-                "Nombre del perro:", txtNombre,
+                "Nombre:", txtNombre,
+                "Raza:", txtRaza,
+                "Edad (años):", txtEdad,
+                "Tamaño:", cmbTamano,
                 "Nivel de energia (1-5):", txtEnergia,
-                chkCondicion
+                chkCondicion,
+                "Criticidad medica (1-5) (0 si no tiene):", txtCriticidad
         };
 
         int option = JOptionPane.showConfirmDialog(this, message, "Registrar Perro", JOptionPane.OK_CANCEL_OPTION);
@@ -75,11 +83,14 @@ public class VentanaPrincipal extends JFrame {
                 }
 
                 String nombre = txtNombre.getText().trim();
-                if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-                    JOptionPane.showMessageDialog(this, "Error: El nombre solo debe contener letras.");
+                String raza = txtRaza.getText().trim();
+                if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+") || !raza.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                    JOptionPane.showMessageDialog(this, "Error: Nombre y raza solo deben contener letras.");
                     return;
                 }
 
+                int edad = Integer.parseInt(txtEdad.getText());
+                String tamano = cmbTamano.getSelectedItem().toString();
                 int energia = Integer.parseInt(txtEnergia.getText());
                 if (energia < 1 || energia > 5) {
                     JOptionPane.showMessageDialog(this, "Error: La energia debe estar entre 1 y 5.");
@@ -87,11 +98,12 @@ public class VentanaPrincipal extends JFrame {
                 }
 
                 boolean condicion = chkCondicion.isSelected();
+                int criticidad = Integer.parseInt(txtCriticidad.getText());
 
-                listaAnimales.add(new Perro(id, nombre, energia, condicion));
+                listaAnimales.add(new Perro(id, nombre, raza, edad, tamano, energia, condicion, criticidad));
                 JOptionPane.showMessageDialog(this, "Perro registrado exitosamente.");
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Error: Formato invalido en la energia.");
+                JOptionPane.showMessageDialog(this, "Error: Formato invalido en los campos numericos.");
             }
         }
     }
@@ -99,6 +111,9 @@ public class VentanaPrincipal extends JFrame {
     private void registrarAdoptante() {
         JTextField txtCedula = new JTextField();
         JTextField txtNombre = new JTextField();
+        JTextField txtTelefono = new JTextField();
+        JComboBox<String> cmbVivienda = new JComboBox<>(new String[]{"Casa", "Departamento"});
+        JTextField txtArea = new JTextField();
         JTextField txtPresupuesto = new JTextField();
         JTextField txtHoras = new JTextField();
         JCheckBox chkExperiencia = new JCheckBox("Tiene experiencia previa?");
@@ -106,6 +121,9 @@ public class VentanaPrincipal extends JFrame {
         Object[] message = {
                 "Cedula:", txtCedula,
                 "Nombre:", txtNombre,
+                "Telefono:", txtTelefono,
+                "Tipo de Vivienda:", cmbVivienda,
+                "Area disponible (m2):", txtArea,
                 "Presupuesto mensual ($):", txtPresupuesto,
                 "Horas fuera de casa al dia:", txtHoras,
                 chkExperiencia
@@ -115,8 +133,9 @@ public class VentanaPrincipal extends JFrame {
         if (option == JOptionPane.OK_OPTION) {
             try {
                 String cedula = txtCedula.getText().trim();
-                if (!cedula.matches("\\d+")) {
-                    JOptionPane.showMessageDialog(this, "Error: La cedula solo debe contener numeros.");
+                String telefono = txtTelefono.getText().trim();
+                if (!cedula.matches("\\d+") || !telefono.matches("\\d+")) {
+                    JOptionPane.showMessageDialog(this, "Error: Cedula y telefono solo deben contener numeros.");
                     return;
                 }
 
@@ -133,21 +152,19 @@ public class VentanaPrincipal extends JFrame {
                     return;
                 }
 
+                String tipoVivienda = cmbVivienda.getSelectedItem().toString();
+                double areaMetros = Double.parseDouble(txtArea.getText());
                 double presupuesto = Double.parseDouble(txtPresupuesto.getText());
-                if (presupuesto < 0) {
-                    JOptionPane.showMessageDialog(this, "Error: El presupuesto no puede ser negativo.");
-                    return;
-                }
-
                 int horas = Integer.parseInt(txtHoras.getText());
-                if (horas < 0) {
-                    JOptionPane.showMessageDialog(this, "Error: Las horas no pueden ser negativas.");
+
+                if (areaMetros < 0 || presupuesto < 0 || horas < 0) {
+                    JOptionPane.showMessageDialog(this, "Error: Los valores numericos no pueden ser negativos.");
                     return;
                 }
 
                 boolean experiencia = chkExperiencia.isSelected();
 
-                listaAdoptantes.add(new Adoptante(cedula, nombre, presupuesto, horas, experiencia));
+                listaAdoptantes.add(new Adoptante(cedula, nombre, telefono, tipoVivienda, areaMetros, presupuesto, horas, experiencia));
                 JOptionPane.showMessageDialog(this, "Adoptante registrado exitosamente.");
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Error: Formato invalido en los numeros.");
@@ -202,7 +219,7 @@ public class VentanaPrincipal extends JFrame {
                 evaluacion += "MATCH BAJO: Se recomienda buscar otras opciones.";
                 JOptionPane.showMessageDialog(this, evaluacion);
             } else {
-                evaluacion += "MATCH FALLIDO: No se cumplen los requisitos minimos o el adoptante esta vetado.";
+                evaluacion += "MATCH FALLIDO: No se cumplen los requisitos minimos, restriccion de espacio, o el adoptante esta vetado.";
                 JOptionPane.showMessageDialog(this, evaluacion);
             }
         }

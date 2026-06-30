@@ -10,6 +10,10 @@ public class GestorEmparejamiento {
             return 0;
         }
 
+        if (adoptante.getTipoVivienda().equals("Departamento") && adoptante.getAreaMetros() < 50.0 && animal.getTamano().equals("Grande")) {
+            return 0;
+        }
+
         int puntaje = 100;
 
         if (animal.tieneCondicionMedica() && adoptante.getPresupuestoMensual() < 100.0) {

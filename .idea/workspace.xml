@@ -6,9 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="aca6de88-0803-4bce-a043-ac7913a66ed0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Animal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/VentanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/VentanaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Adoptante.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Animal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Persona.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c2_negocio/GestorEmparejamiento.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c2_negocio/GestorEmparejamiento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/VentanaPrincipal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Adoptante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Adoptante.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c1_modelo/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Perro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Perro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c3_interfaz/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c3_interfaz/VentanaPrincipal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,10 +34,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3Fn6wOOW6VGbcNHpyuCjVBYhb95" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,6 +50,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
