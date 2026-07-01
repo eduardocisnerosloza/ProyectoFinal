@@ -5,14 +5,14 @@ public abstract class Animal {
     private String nombre;
     private String raza;
     private int edad;
-    private String tamano;
+    private TamanoAnimal tamano;
     private int nivelEnergia;
     private boolean condicionMedicaEspecial;
     private int criticidadMedica;
-    private String estado;
+    private EstadoAnimal estado;
     private Adoptante adoptante;
 
-    public Animal(String id, String nombre, String raza, int edad, String tamano, int nivelEnergia, boolean condicionMedicaEspecial, int criticidadMedica) {
+    public Animal(String id, String nombre, String raza, int edad, TamanoAnimal tamano, int nivelEnergia, boolean condicionMedicaEspecial, int criticidadMedica) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
@@ -21,27 +21,62 @@ public abstract class Animal {
         this.nivelEnergia = nivelEnergia;
         this.condicionMedicaEspecial = condicionMedicaEspecial;
         this.criticidadMedica = criticidadMedica;
-        this.estado = "En Cuarentena";
+        this.estado = EstadoAnimal.DISPONIBLE;
         this.adoptante = null;
     }
 
-    public String getId() { return id; }
-    public String getNombre() { return nombre; }
-    public String getRaza() { return raza; }
-    public int getEdad() { return edad; }
-    public String getTamano() { return tamano; }
-    public int getNivelEnergia() { return nivelEnergia; }
-    public boolean tieneCondicionMedica() { return condicionMedicaEspecial; }
-    public int getCriticidadMedica() { return criticidadMedica; }
-    public String getEstado() { return estado; }
-    public void setEstado(String estado) { this.estado = estado; }
-    public Adoptante getAdoptante() { return adoptante; }
-    public void setAdoptante(Adoptante adoptante) { this.adoptante = adoptante; }
+    public String getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public TamanoAnimal getTamano() {
+        return tamano;
+    }
+
+    public int getNivelEnergia() {
+        return nivelEnergia;
+    }
+
+    public boolean tieneCondicionMedica() {
+        return condicionMedicaEspecial;
+    }
+
+    public int getCriticidadMedica() {
+        return criticidadMedica;
+    }
+
+    public EstadoAnimal getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoAnimal estado) {
+        this.estado = estado;
+    }
+
+    public Adoptante getAdoptante() {
+        return adoptante;
+    }
+
+    public void setAdoptante(Adoptante adoptante) {
+        this.adoptante = adoptante;
+    }
 
     public String calcularPrioridad() {
         double ip = (criticidadMedica * 0.7) + (edad * 0.3);
         if (ip >= 4.0) {
-            return "Critico";
+            return "Crítico";
         } else if (ip >= 2.0) {
             return "Moderado";
         } else {
@@ -53,6 +88,6 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return nombre + " (" + getTipo() + " " + raza + " - ID: " + id + ") - Prioridad: " + calcularPrioridad();
+        return nombre + " (" + getTipo() + " " + raza + " - ID: " + id + ") - Estado: " + estado + " - Prioridad: " + calcularPrioridad();
     }
 }

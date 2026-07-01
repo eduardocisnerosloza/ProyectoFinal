@@ -6,16 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="aca6de88-0803-4bce-a043-ac7913a66ed0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Adoptante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Animal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Persona.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Adoptante.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Adoptante.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Animal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c1_modelo/Perro.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c2_negocio/GestorEmparejamiento.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c2_negocio/GestorEmparejamiento.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/VentanaPrincipal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/VentanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROYECTOPROGRA2/c3_interfaz/VentanaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c1_modelo/Adoptante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Adoptante.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c1_modelo/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c1_modelo/Perro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Perro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/c1_modelo/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c1_modelo/Persona.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c2_negocio/GestorEmparejamiento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/c3_interfaz/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c3_interfaz/VentanaPrincipal.java" afterDir="false" />
     </list>
@@ -43,30 +42,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ConsolaPrincipal.executor": "Run",
-    "Application.VentanaPrincipal.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/estebancis02/Documents/UDLA/Cuarto Semestre/Programacion II/Proyecto Final/PROGRAMACIONPROYECTO-JAVA--main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ConsolaPrincipal.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VentanaPrincipal.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/estebancis02/Documents/UDLA/Cuarto Semestre/Programacion II/Proyecto Final/PROGRAMACIONPROYECTO-JAVA--main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="aca6de88-0803-4bce-a043-ac7913a66ed0" name="Changes" comment="" />
